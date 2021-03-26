@@ -63,7 +63,7 @@
        echo " <div class='col-sm-4'>"
           ."<h4>".$row["shopName"]."</h4>" 
           .$row["shopDetail"]. "<br>". "<br>"
-          ."<button type='button' class='btn btn-danger'>"."ราคา ".$row["shopPrice"]."บาท". "</button>"."<br>"
+          ."<button type='button' class='btn btn-danger' disabled>"."ราคา ".$row["shopPrice"]."บาท". "</button>"."<br>"
           ."</div>";
     }
     echo "</div>"; 

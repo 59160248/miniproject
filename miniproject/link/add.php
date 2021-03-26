@@ -12,6 +12,10 @@
         border: 1px solid grey;
         height: 200px;
     }
+    .container > div{
+            position: relative;
+            min-height: 100vh;
+        }
     </style>
 <body>
   <nav class="navbar navbar-default">
@@ -57,12 +61,24 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
 die("Connection failed: " . $conn->connect_error);
 }
+$itemID = $_POST['itemID'];
+$itemName = $_POST['itemName'];
+$itemDetail = $_POST['itemDetail'];
+$itemPrice = $_POST['itemPrice'];
 
-
-$sql = "SELECT shopID, shopName, shopDetail, shopPrice FROM shopping";
-$result = $conn->query($sql);
+if($itemID !="" && $itemName !="" && $itemDetail !="" && $itemPrice !="" ){
+  $sql = "INSERT INTO shopping (shopID, shopName, shopDetail, shopPrice) VALUES ('$itemID', '$itemName', '$itemDetail', '$itemPrice')";
+}
+$successfully = "New record created successfully";
+$error = "Error: " . $sql . "<br>" . $conn->error;
+if ($conn->query($sql) === TRUE) {
+  echo $successfully;
+} else {
+  echo $error;
+}
 
 $conn->close();
+
 ?>
 </div>
 </body>
